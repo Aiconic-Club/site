@@ -1,9 +1,84 @@
+'use client';
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Page = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      toast({
+        title: "Missing information",
+        description: "Please fill out all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    try {
+      setIsSubmitting(true);
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+      
+      // Reset the form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+    } catch (error) {
+      toast({
+        title: "Failed to send message",
+        description: error instanceof Error ? error.message : "Please try again later",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-5xl font-bold mb-8 border-b-4 border-black pb-2">Get in Touch</h1>
@@ -12,13 +87,16 @@ const Page = () => {
         {/* Contact Form */}
         <Card className="p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-green-200 rounded-lg">
           <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-lg font-bold mb-2">Name</label>
               <Input 
                 id="name" 
                 placeholder="Your name" 
                 className="w-full p-4 border-4 border-black rounded-lg focus:ring-pink-500"
+                value={formData.name}
+                onChange={handleChange}
+                disabled={isSubmitting}
               />
             </div>
             <div>
@@ -28,6 +106,9 @@ const Page = () => {
                 type="email" 
                 placeholder="your.email@example.com" 
                 className="w-full p-4 border-4 border-black rounded-lg focus:ring-pink-500"
+                value={formData.email}
+                onChange={handleChange}
+                disabled={isSubmitting}
               />
             </div>
             <div>
@@ -36,6 +117,9 @@ const Page = () => {
                 id="subject" 
                 placeholder="What's this about?" 
                 className="w-full p-4 border-4 border-black rounded-lg focus:ring-pink-500"
+                value={formData.subject}
+                onChange={handleChange}
+                disabled={isSubmitting}
               />
             </div>
             <div>
@@ -44,13 +128,17 @@ const Page = () => {
                 id="message" 
                 placeholder="Tell us what's on your mind..." 
                 className="w-full p-4 border-4 border-black rounded-lg min-h-[150px] focus:ring-pink-500"
+                value={formData.message}
+                onChange={handleChange}
+                disabled={isSubmitting}
               />
             </div>
             <Button
               type="submit"
               className="w-full bg-pink-500 hover:bg-pink-600 text-white text-lg font-bold py-3 px-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </Card>
@@ -62,37 +150,7 @@ const Page = () => {
             <div className="space-y-4">
               <div>
                 <h3 className="text-xl font-bold">Email</h3>
-                <p className="text-lg">info@aiconicclub.com</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Phone</h3>
-                <p className="text-lg">(555) 123-4567</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Address</h3>
-                <p className="text-lg">
-                  123 AI Boulevard<br />
-                  Tech District<br />
-                  Innovation City, IC 98765
-                </p>
-              </div>
-            </div>
-          </Card>
-
-          <Card className="p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-blue-200 rounded-lg">
-            <h2 className="text-3xl font-bold mb-6">Office Hours</h2>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-lg font-bold">Monday - Friday:</span>
-                <span className="text-lg">9:00 AM - 6:00 PM</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-lg font-bold">Saturday:</span>
-                <span className="text-lg">10:00 AM - 4:00 PM</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-lg font-bold">Sunday:</span>
-                <span className="text-lg">Closed</span>
+                <p className="text-lg">mail.aiconic@gmail.com</p>
               </div>
             </div>
           </Card>

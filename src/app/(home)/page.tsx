@@ -127,9 +127,7 @@ const spotifyPlaylists = [
     creator: "AI-Conic Club",
     description: "The perfect background tracks for late-night debugging sessions.",
     coverImage: "https://i.scdn.co/image/ab67706c0000da84c1bdd8296ba60a0c1a0dee2b",
-    embedUrl: "https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M",
-    trackCount: 42,
-    duration: "3hr 15min"
+    embedUrl: "https://open.spotify.com/embed/playlist/1ulenl9nthj3lvC1P9cUdC?utm_source=generator",
   },
 ];
 
@@ -440,7 +438,14 @@ export default function Home() {
               </div>
             </div>
             <p className="mb-4">{playlist.description}</p>
-            <iframe src={playlist.embedUrl} width="100%" height="80" frameBorder="0" allow="encrypted-media"></iframe>
+            <iframe 
+              src={playlist.embedUrl} 
+              width="100%" 
+              height="100" 
+              frameBorder="0"  
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+            ></iframe>
             <div className="flex justify-between items-center mt-4">
               <span className="text-sm">{playlist.trackCount} tracks</span>
               <span className="text-sm">{playlist.duration}</span>
