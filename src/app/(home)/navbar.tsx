@@ -51,12 +51,8 @@ const navbarItems = [
         children: "About",
     },
     {
-        href: "/features",
-        children: "Features",
-    },
-    {
-        href: "/pricing",
-        children: "Pricing",
+        href: "/gallery",
+        children: "Gallery",
     },
     {
         href: "/contact",
@@ -72,7 +68,7 @@ export const Navbar = () => {
         <nav className="h-20 flex border-b justify-between font-medium bg-white">
             <Link href="/" className="pl-6 flex items-center">
             <span className={cn("text-5xl font-semibold")}>
-                Kiki's Delivery Service
+                AI-Conic Club
             </span>
             </Link>
 
@@ -99,15 +95,15 @@ export const Navbar = () => {
             asChild
             variant="secondary"
             className="border-l border-t-0 border-b-0 border-r-0 px-12 h-full rounded-none bg-white hover:bg-pink-400 transition-colors text-lg">
-                <Link href="/sign-in">
-                Log in
+                <Link href="/blog">
+                Blog
                 </Link>
             </Button>
             <Button
             asChild
             className="border-l border-t-0 border-b-0 border-r-0 px-12 h-full rounded-none bg-black text-white hover:bg-pink-400 hover:text-black transition-colors text-lg">
-                <Link href="/sign-up">
-                Start Selling
+                <Link href="https://discord.gg/VYMC4J36wu">
+                Join Now!
                 </Link>
             </Button>
         </div>
