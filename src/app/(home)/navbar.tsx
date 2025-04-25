@@ -2,17 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavbarSidebar } from "./navbar-sidebar";
 import React from "react";
 import { MenuIcon } from "lucide-react";
-
-const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["700"],
-});
 
 interface NavbarItemProps {
     href: string;

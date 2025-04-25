@@ -270,7 +270,7 @@ const AboutPage = () => {
               </div>
               <h3 className="text-xl font-bold text-white">HAL 9000</h3>
               <p className="text-sm text-white opacity-80 mb-2">Secret AI Overlord</p>
-              <p className="text-sm text-white mb-4">I'm sorry Dave, I'm afraid I can't let you leave this website.</p>
+              <p className="text-sm text-white mb-4">I&apos;m sorry Dave, I&apos;m afraid I can&apos;t let you leave this website.</p>
               <div className="flex justify-center space-x-2">
                 <Badge className="bg-red-600 hover:bg-red-700">Daisy, Daisy...</Badge>
               </div>
@@ -290,10 +290,10 @@ const AboutPage = () => {
               AI-Conic Club was founded with a simple mission: to make artificial intelligence accessible, understandable, and fun for everyone.
             </p>
             <p className="text-lg mb-4">
-              We believe that AI technology shouldn't be locked away in research papers or limited to those with advanced degrees. Through workshops, talks, hackathons, and social events, we're building a community where anyone curious about AI can learn, experiment, and grow. 
+              We believe that AI technology shouldn`&apos;`t be locked away in research papers or limited to those with advanced degrees. Through workshops, talks, hackathons, and social events, we`&apos;`re building a community where anyone curious about AI can learn, experiment, and grow. 
             </p>
             <p className="text-lg">
-              Whether you're a complete beginner wondering what AI is all about, a student looking to expand your skills, or an industry professional seeking to connect with others, AI-Conic Club welcomes you. Just don't ask us to open the pod bay doors.
+              Whether you`&apos;`re a complete beginner wondering what AI is all about, a student looking to expand your skills, or an industry professional seeking to connect with others, AI-Conic Club welcomes you. Just don`&apos;`t ask us to open the pod bay doors.
             </p>
           </div>
           <div className="md:w-1/3 relative cursor-pointer" onClick={handleLogoClick}>
@@ -423,7 +423,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
           <div className="mt-4 bg-yellow-200 p-3 border-2 border-black rounded-lg text-sm relative">
             <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-8 border-transparent border-b-black"></div>
             <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-8 border-transparent border-b-yellow-200"></div>
-            <p className="italic">"{member.quote}"</p>
+            <p className="italic">&ldquo;{member.quote}&ldquo;</p>
           </div>
         )}
       </div>

@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import Link from "next/link";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect } from "react";
 
 const baseEvents = [
@@ -13,7 +13,7 @@ const baseEvents = [
     title: "AI Workshop: Don't Be Skynet",
     date: "Every Thursday",
     time: "1:40 PM",
-    location: "Tech Hub, Floor 3",
+    location: "NCIT, Software Department, 702",
     description: "Explore the ethical implications of AI development...",
     category: "Meeting",
     color: "bg-orange-200",
@@ -32,9 +32,6 @@ const baseEvents = [
     month: "Coming Soon",
   },
 ];
-
-const months = ["All", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Coming Soon"];
-const categories = ["All", ...Array.from(new Set(baseEvents.map(event => event.category)))];
 
 const Page = () => {
   const [events, setEvents] = useState(baseEvents);

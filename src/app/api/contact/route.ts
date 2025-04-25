@@ -1,13 +1,20 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// Create a transporter with your email configuration
+// Define the recipient email consistently
+const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'trashhpandaaaa@gmail.com';
+
+// Create transporter with more detailed options for Gmail
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // You can use other services like 'outlook', 'yahoo', etc.
+  service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER || 'mail.aiconic@gmail.com', // Your email address
-    pass: process.env.EMAIL_PASSWORD, // Your email password or app password
+    user: process.env.EMAIL_USER || 'trashhpandaaaa@gmail.com',
+    pass: process.env.EMAIL_PASSWORD,
   },
+  // Add additional required settings for current Gmail requirements
+  tls: {
+    rejectUnauthorized: false // Helps with some Gmail security policies
+  }
 });
 
 export async function POST(request: Request) {
@@ -26,8 +33,10 @@ export async function POST(request: Request) {
 
     // Email options
     const mailOptions = {
-      from: `"${name}" <${email}>`,
-      to: 'mail.aiconic@gmail.com',
+      // Using a fixed "from" address to avoid email spoofing issues
+      from: `"Contact Form" <${process.env.EMAIL_USER || 'trashhpandaaaa@gmail.com'}>`,
+      replyTo: email, // Set reply-to as the submitter's email
+      to: RECIPIENT_EMAIL,
       subject: `Contact Form: ${subject}`,
       text: `
 Name: ${name}
@@ -57,7 +66,7 @@ ${message}
     try {
       // Check if email password is configured
       if (!process.env.EMAIL_PASSWORD) {
-        console.log('Email would be sent to: mail.aiconic@gmail.com');
+        console.log(`Email would be sent to: ${RECIPIENT_EMAIL}`);
         console.log('From:', name, email);
         console.log('Subject:', subject);
         console.log('Message:', message);
@@ -69,25 +78,33 @@ ${message}
         );
       }
       
-      // Send email
-      await transporter.sendMail(mailOptions);
+      // Send email and capture the response
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent successfully:', info.response);
       
       // Return success response
       return NextResponse.json(
         { success: true, message: 'Form submitted successfully' },
         { status: 200 }
       );
-    } catch (emailError) {
+    } catch (emailError: Error) {
       console.error('Error sending email:', emailError);
+      // Include more detailed error information
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { 
+          error: 'Failed to send email', 
+          details: emailError.message 
+        },
         { status: 500 }
       );
     }
-  } catch (error) {
+  } catch (error: Error) {
     console.error('Error processing contact form:', error);
     return NextResponse.json(
-      { error: 'Failed to process your request' },
+      { 
+        error: 'Failed to process your request',
+        details: error.message 
+      },
       { status: 500 }
     );
   }

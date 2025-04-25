@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+// import Link from "next/link";
+// import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 // Gallery data structure with series
@@ -68,7 +68,7 @@ const Page = () => {
       <div className="bg-pink-200 p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg mb-16">
         <h2 className="text-3xl font-bold mb-4">Capturing Our AI Journey</h2>
         <p className="text-xl">
-          Explore photos from our events, workshops, hackathons, and social gatherings. These moments showcase our vibrant community and the exciting world of AI we're building together.
+          Explore photos from our events, workshops, hackathons, and social gatherings. These moments showcase our vibrant community and the exciting world of AI we`&apos`re building together.
         </p>
       </div>
       
@@ -184,7 +184,7 @@ const Page = () => {
       <div className="bg-blue-200 p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg mb-16">
         <h2 className="text-3xl font-bold mb-4">Share Your Photos</h2>
         <p className="text-xl mb-6">
-          Did you attend one of our events? We'd love to see your photos! Submit your AI-Conic Club memories to be featured in our gallery.
+          Did you attend one of our events? We`&apos`d love to see your photos! Submit your AI-Conic Club memories to be featured in our gallery.
         </p>
         <Button
           className="bg-pink-500 hover:bg-pink-600 text-white text-lg font-bold py-3 px-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"

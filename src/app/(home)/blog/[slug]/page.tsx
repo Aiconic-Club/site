@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { blogPosts } from "../data";
+import { Metadata } from "next";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -10,20 +11,40 @@ export function generateStaticParams() {
   }));
 }
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
+// Generate metadata for the page
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: { slug: string } 
+}): Promise<Metadata> {
+  const post = blogPosts.find((post) => post.slug === params.slug);
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    };
+  }
+  
+  return {
+    title: post.title,
+    description: post.excerpt,
   };
 }
 
-const BlogPostPage = ({ params }: BlogPostPageProps) => {
+type Props = {
+  params: { slug: string };
+};
+
+// Using function declaration instead of arrow function
+export default function BlogPostPage(props: Props) {
+  const { params } = props;
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-5xl font-bold mb-8 border-b-4 border-black pb-2">Blog Post Not Found</h1>
-        <p className="text-xl mb-8">The blog post you're looking for doesn't exist or may have been removed.</p>
+        <p className="text-xl mb-8">The blog post you&apos;re looking for doesn&apos;t exist or may have been removed.</p>
         <Button asChild className="bg-pink-500 hover:bg-pink-600 text-white font-bold text-lg px-8 py-6 rounded-lg border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
           <Link href="/blog">Back to Blog</Link>
         </Button>
@@ -127,6 +148,4 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
       </Card>
     </div>
   );
-};
-
-export default BlogPostPage; 
+}

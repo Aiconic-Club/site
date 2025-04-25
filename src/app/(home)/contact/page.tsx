@@ -27,8 +27,7 @@ const Page = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+  
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       toast({
         title: "Missing information",
@@ -37,37 +36,34 @@ const Page = () => {
       });
       return;
     }
-    
+  
     try {
       setIsSubmitting(true);
-      
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+  
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxoozPT_N3C9HwYPqHmm59kmkN5AYw65KB0rp0jNxGIMuHk4IQ68zuKXqsgbtKoPBcGkQ/exec", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-      
-      const data = await response.json();
-      
+  
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        throw new Error("Failed to send message to Google Sheet.");
       }
-      
-      // Reset the form
+  
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-      
+  
       toast({
         title: "Message sent!",
         description: "We'll get back to you as soon as possible.",
       });
-      
+  
     } catch (error) {
       toast({
         title: "Failed to send message",
@@ -78,6 +74,7 @@ const Page = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="container mx-auto p-8">

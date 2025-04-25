@@ -16,7 +16,7 @@ const upcomingEvents = [
     title: "AI Workshop: Don't Be Skynet",
     date: "Every Thursday",
     time: "1:40 PM",
-    location: "Tech Hub, Floor 3",
+    location: "NCIT, Sofware Department, 702",
     description: "Explore the ethical implications of AI development...",
     category: "Meeting",
     color: "bg-orange-200",
@@ -196,7 +196,7 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
           <div className="bg-yellow-300 p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg text-center transform animate-bounce">
             <h2 className="text-3xl font-bold mb-2">Easter Egg Found!</h2>
-            <p className="text-xl">You found the secret! As Morpheus would say: "You take the blue pill... the story ends. You take the red pill... you stay in Wonderland, and I show you how deep the rabbit hole goes."</p>
+            <p className="text-xl">You found the secret! As Morpheus would say: `&quot`You take the blue pill... the story ends. You take the red pill... you stay in Wonderland, and I show you how deep the rabbit hole goes.`&quot`</p>
           </div>
         </div>
       )}
@@ -206,7 +206,7 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
           <div className="bg-green-300 p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg text-center transform animate-pulse">
             <h2 className="text-3xl font-bold mb-2">⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️</h2>
-            <p className="text-xl">Konami Code Activated! You've unlocked infinite Aura! (Or just this popup...)</p>
+            <p className="text-xl">Konami Code Activated! You`&apos`ve unlocked infinite Aura! (Or just this popup...)</p>
             <div className="mt-4 text-6xl">👾</div>
           </div>
         </div>
