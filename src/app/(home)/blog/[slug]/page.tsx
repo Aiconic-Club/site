@@ -35,9 +35,9 @@ export async function generateMetadata({
 }
 
 // BlogPostPage component - displaying the blog post details
-// Using searchParams even if not used to satisfy PageProps constraint
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function BlogPostPage({ 
-  params, 
+  params,
   searchParams 
 }: { 
   params: { slug: string };
