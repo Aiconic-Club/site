@@ -105,7 +105,7 @@ const carouselItems = [
     description: "Connect with AI enthusiasts, share knowledge, and grow together. We're basically the Avengers, but for AI.",
     buttonText: "Join Discord",
     buttonLink: "/contact",
-    imageUrl: "/images/IMG_1039.jpg",
+    imageUrl: "https://res.cloudinary.com/dyz9a9bpr/image/upload/v1745747722/IMG_1039_kyekoi.jpg",
     bgColor: "bg-blue-300",
     easterEgg: "If you click me 3 times, I'll show you something cool!"
   },
@@ -115,7 +115,7 @@ const carouselItems = [
     description: "Hands-on learning experiences led by industry experts. No, we don't teach how to create Ultron.",
     buttonText: "View Schedule",
     buttonLink: "/events",
-    imageUrl: "/images/members.jpg",
+    imageUrl: "https://res.cloudinary.com/dyz9a9bpr/image/upload/v1745747722/members_nf8kqp.jpg",
     bgColor: "bg-green-300"
   }
 ];
