@@ -5,14 +5,13 @@ import Link from "next/link";
 import { blogPosts } from "../data";
 import { Metadata } from "next";
 import Image from "next/image";
-// Remove unused imports
-// import { GetStaticPaths, GetStaticProps } from "next/types";
 
-interface PageProps {
+// Define the correct page props type for Next.js App Router
+type Props = {
   params: {
     slug: string;
   };
-  searchParams: Record<string, string | string[] | undefined>;
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export function generateStaticParams() {
@@ -41,9 +40,8 @@ export async function generateMetadata({
   };
 }
 
-// Using function declaration instead of arrow function
-export default function BlogPostPage({params}: PageProps) {
-  const { } = params;
+// Using the correct Props type for App Router
+export default function BlogPostPage({ params }: Props) {
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
