@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 // import Link from "next/link";
 // import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import Image from "next/image";
 
 // Gallery data structure with series
 const galleryImages = [
@@ -111,7 +110,7 @@ const Page = () => {
             onClick={() => openSeries(image.category)}
           >
             <div className="relative h-60 overflow-hidden">
-              <Image 
+              <img
                 src={image.imageUrl} 
                 alt={image.title}
                 className="w-full h-full object-cover"
@@ -142,7 +141,7 @@ const Page = () => {
             
             {/* Image display */}
             <div className="relative h-full w-full flex items-center justify-center">
-              <Image 
+              <img
                 src={seriesImages[currentImageIndex].imageUrl} 
                 alt={seriesImages[currentImageIndex].title}
                 className="max-h-full max-w-full object-contain"

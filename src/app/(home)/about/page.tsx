@@ -3,7 +3,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
@@ -262,7 +261,7 @@ const AboutPage = () => {
           <Card className="bg-gradient-to-r from-purple-500 to-blue-500 p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg max-w-xs">
             <div className="text-center">
               <div className="w-32 h-32 mx-auto bg-white rounded-full overflow-hidden border-4 border-black mb-4">
-                <Image
+                <img
                   src="/team/hal9000.png"
                   alt="HAL 9000"
                   width={128}
@@ -300,7 +299,7 @@ const AboutPage = () => {
           </div>
           <div className="md:w-1/3 relative cursor-pointer" onClick={handleLogoClick}>
             <div className="w-64 h-64 bg-white rounded-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <Image
+              <img
                 src="/logo.png"
                 alt="AI-Conic Club Logo"
                 width={256}
@@ -384,7 +383,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
     >
       <div className="text-center">
         <div className="w-32 h-32 mx-auto bg-gray-200 rounded-full overflow-hidden border-4 border-black mb-4">
-          <Image
+          <img
             src={member.image}
             alt={member.name}
             width={128}

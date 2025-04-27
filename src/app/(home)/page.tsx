@@ -8,7 +8,7 @@ import { blogPosts } from "./blog/data";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import Image from "next/image";
+
 
 // Sample data for upcoming events calendar
 const upcomingEvents = [
@@ -240,7 +240,7 @@ export default function Home() {
                       )}
                     </div>
                     <div className="md:w-1/2 relative md:absolute md:right-0 md:top-0 md:bottom-0">
-                      <Image 
+                      <img 
                         src={item.imageUrl}
                         alt={item.title}
                         width={800}
@@ -341,7 +341,7 @@ export default function Home() {
               <CarouselItem key={project.id}>
                 <Card className="bg-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
                   <div className="flex items-center mb-4">
-                    <Image 
+                    <img
                       src={project.avatar} 
                       alt={project.owner} 
                       width={40}
@@ -405,7 +405,7 @@ export default function Home() {
                 </div>
               )}
               <div className="relative h-48">
-                <Image 
+                <img
                   src={post.imageUrl} 
                   alt={post.title}
                   width={600}
@@ -442,7 +442,7 @@ export default function Home() {
         {spotifyPlaylists.map((playlist) => (
           <Card key={playlist.id} className="bg-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
             <div className="flex items-center mb-4">
-              <Image 
+              <img
                 src={playlist.coverImage} 
                 alt={playlist.title} 
                 width={64}

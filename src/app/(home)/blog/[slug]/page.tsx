@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { blogPosts } from "../data";
 import { Metadata } from "next";
-import Image from "next/image";
 
 // Generate static parameters for all blog posts
 export function generateStaticParams() {
@@ -78,7 +77,7 @@ export default async function BlogPostPage({
       </div>
 
       <div className="relative h-96 mb-12 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-        <Image 
+        <img
           src={post.imageUrl} 
           alt={post.title}
           width={1200}
@@ -100,7 +99,7 @@ export default async function BlogPostPage({
         <h2 className="text-2xl font-bold mb-4">About the Author</h2>
         <div className="flex items-center">
           <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-black mr-6">
-            <Image 
+            <img
               src={post.authorImageUrl} 
               alt={post.author}
               width={96}
@@ -129,7 +128,7 @@ export default async function BlogPostPage({
               <Link href={`/blog/${relatedPost.slug}`} key={index}>
                 <Card className="h-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
                   <div className="relative h-40">
-                    <Image 
+                    <img
                       src={relatedPost.imageUrl} 
                       alt={relatedPost.title}
                       width={400}
