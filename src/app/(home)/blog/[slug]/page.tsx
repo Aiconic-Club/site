@@ -5,9 +5,14 @@ import Link from "next/link";
 import { blogPosts } from "../data";
 import { Metadata } from "next";
 import Image from "next/image";
+// Remove unused imports
+// import { GetStaticPaths, GetStaticProps } from "next/types";
 
 interface PageProps {
-  params: { slug: string };
+  params: {
+    slug: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
 export function generateStaticParams() {
@@ -36,6 +41,9 @@ export async function generateMetadata({
   };
 }
 
+type Props = {
+  params: { slug: string };
+};
 
 // Using function declaration instead of arrow function
 export default function BlogPostPage({params}: PageProps) {
