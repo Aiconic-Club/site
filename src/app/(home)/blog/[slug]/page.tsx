@@ -35,14 +35,11 @@ export async function generateMetadata({
 }
 
 // BlogPostPage component - displaying the blog post details
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default async function BlogPostPage({ 
-  params,
+export default function BlogPostPage({ 
+  params
 }: { 
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: { slug: string } 
 }) {
-  // Make this function async to satisfy any Promise expectations
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
