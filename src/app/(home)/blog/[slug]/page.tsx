@@ -33,7 +33,11 @@ export async function generateMetadata({
 }
 
 // Use a simpler approach - let Next.js infer the types
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ 
+  params 
+}: { 
+  params: { slug: string } 
+}) {
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
