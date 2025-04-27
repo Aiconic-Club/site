@@ -36,9 +36,6 @@ export async function generateMetadata({
   };
 }
 
-type Props = {
-  params: { slug: string };
-};
 
 // Using function declaration instead of arrow function
 export default function BlogPostPage({params}: PageProps) {
