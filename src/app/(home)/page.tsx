@@ -8,6 +8,7 @@ import { blogPosts } from "./blog/data";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import Image from "next/image";
 
 // Sample data for upcoming events calendar
 const upcomingEvents = [
@@ -239,7 +240,7 @@ export default function Home() {
                       )}
                     </div>
                     <div className="md:w-1/2 relative md:absolute md:right-0 md:top-0 md:bottom-0">
-                      <img 
+                      <Image 
                         src={item.imageUrl}
                         alt={item.title}
                         className="w-full h-full object-cover md:absolute md:right-0 md:top-0 md:rounded-l-lg border-4 border-black md:h-full"
@@ -338,7 +339,7 @@ export default function Home() {
               <CarouselItem key={project.id}>
                 <Card className="bg-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
                   <div className="flex items-center mb-4">
-                    <img src={project.avatar} alt={project.owner} className="w-10 h-10 rounded-full mr-4" />
+                    <Image src={project.avatar} alt={project.owner} className="w-10 h-10 rounded-full mr-4" />
                     <div>
                       <h3 className="text-xl font-bold">{project.name}</h3>
                       <p className="text-sm text-gray-600">by {project.owner}</p>
@@ -396,7 +397,7 @@ export default function Home() {
                 </div>
               )}
               <div className="relative h-48">
-                <img 
+                <Image 
                   src={post.imageUrl} 
                   alt={post.title}
                   className="w-full h-full object-cover border-b-4 border-black"
@@ -431,7 +432,7 @@ export default function Home() {
         {spotifyPlaylists.map((playlist) => (
           <Card key={playlist.id} className="bg-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
             <div className="flex items-center mb-4">
-              <img src={playlist.coverImage} alt={playlist.title} className="w-16 h-16 rounded-lg mr-4" />
+              <Image src={playlist.coverImage} alt={playlist.title} className="w-16 h-16 rounded-lg mr-4" />
               <div>
                 <h3 className="text-xl font-bold">{playlist.title}</h3>
                 <p className="text-sm text-gray-600">by {playlist.creator}</p>

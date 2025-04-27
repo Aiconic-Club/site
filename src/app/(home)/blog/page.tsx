@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { blogPosts } from "./data";
+import Image from "next/image";
 
 const Page = () => {
   return (
@@ -14,7 +15,7 @@ const Page = () => {
             <Card className="overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
               <div className="md:flex">
                 <div className="md:w-1/3 h-64 md:h-auto relative">
-                  <img 
+                  <Image 
                     src={post.imageUrl} 
                     alt={post.title}
                     className="absolute inset-0 w-full h-full object-cover border-r-4 border-black"

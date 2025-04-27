@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { blogPosts } from "../data";
 import { Metadata } from "next";
+import Image from "next/image";
+
+interface PageProps {
+  params: { slug: string };
+}
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -36,8 +41,8 @@ type Props = {
 };
 
 // Using function declaration instead of arrow function
-export default function BlogPostPage(props: Props) {
-  const { params } = props;
+export default function BlogPostPage({params}: Props) {
+  const { slug } = params;
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -74,7 +79,7 @@ export default function BlogPostPage(props: Props) {
       </div>
 
       <div className="relative h-96 mb-12 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-        <img 
+        <Image 
           src={post.imageUrl} 
           alt={post.title}
           className="w-full h-full object-cover"
@@ -94,7 +99,7 @@ export default function BlogPostPage(props: Props) {
         <h2 className="text-2xl font-bold mb-4">About the Author</h2>
         <div className="flex items-center">
           <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-black mr-6">
-            <img 
+            <Image 
               src={post.authorImageUrl} 
               alt={post.author}
               className="w-full h-full object-cover"
@@ -121,7 +126,7 @@ export default function BlogPostPage(props: Props) {
               <Link href={`/blog/${relatedPost.slug}`} key={index}>
                 <Card className="h-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
                   <div className="relative h-40">
-                    <img 
+                    <Image 
                       src={relatedPost.imageUrl} 
                       alt={relatedPost.title}
                       className="w-full h-full object-cover"
