@@ -6,14 +6,6 @@ import { blogPosts } from "../data";
 import { Metadata } from "next";
 import Image from "next/image";
 
-// Define the correct page props type for Next.js App Router
-type Props = {
-  params: {
-    slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
@@ -40,8 +32,8 @@ export async function generateMetadata({
   };
 }
 
-// Using the correct Props type for App Router
-export default function BlogPostPage({ params }: Props) {
+// Use a simpler approach - let Next.js infer the types
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -81,6 +73,8 @@ export default function BlogPostPage({ params }: Props) {
         <Image 
           src={post.imageUrl} 
           alt={post.title}
+          width={1200}
+          height={600}
           className="w-full h-full object-cover"
         />
       </div>
@@ -101,6 +95,8 @@ export default function BlogPostPage({ params }: Props) {
             <Image 
               src={post.authorImageUrl} 
               alt={post.author}
+              width={96}
+              height={96}
               className="w-full h-full object-cover"
             />
           </div>
@@ -128,6 +124,8 @@ export default function BlogPostPage({ params }: Props) {
                     <Image 
                       src={relatedPost.imageUrl} 
                       alt={relatedPost.title}
+                      width={400}
+                      height={160}
                       className="w-full h-full object-cover"
                     />
                   </div>

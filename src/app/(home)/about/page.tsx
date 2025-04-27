@@ -48,7 +48,8 @@ const teamMembers: TeamMember[] = [
       github: "https://github.com/"
     },
     quote: "I'm not building Skynet, I promise. Maybe.",
-    matrixEasterEgg: true
+    matrixEasterEgg: true,
+    easterEgg: true
   },
   {
     name: "Kapil Singh Dhami",
@@ -89,6 +90,7 @@ const teamMembers: TeamMember[] = [
     quote: "I don't always train neural networks, but when I do, I make them watch Doctor Who first.",
     matrixEasterEgg: true
   },
+
 ];
 
 // FAQs data
