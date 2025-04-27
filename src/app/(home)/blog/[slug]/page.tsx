@@ -41,8 +41,8 @@ type Props = {
 };
 
 // Using function declaration instead of arrow function
-export default function BlogPostPage({params}: Props) {
-  const { slug } = params;
+export default function BlogPostPage({params}: PageProps) {
+  const { } = params;
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
