@@ -463,10 +463,6 @@ export default function Home() {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
               loading="lazy"
             ></iframe>
-            <div className="flex justify-between items-center mt-4">
-              <span className="text-sm">{playlist.trackCount} tracks</span>
-              <span className="text-sm">{playlist.duration}</span>
-            </div>
           </Card>
         ))}
       </div>
