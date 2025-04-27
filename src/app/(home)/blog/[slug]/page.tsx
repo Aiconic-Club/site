@@ -7,6 +7,12 @@ import { blogPosts } from "../data";
 import { Metadata } from "next";
 import Image from "next/image";
 
+type BlogPostParams = {
+  params: {
+    slug: string;
+  };
+};
+
 // Generate static parameters for all blog posts
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -15,7 +21,7 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for the page based on the slug
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
   const post = blogPosts.find((post) => post.slug === params.slug);
   
   if (!post) {
@@ -31,7 +37,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // BlogPostPage component - displaying the blog post details
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: BlogPostParams) {
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
