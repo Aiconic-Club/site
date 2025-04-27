@@ -207,7 +207,7 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
           <div className="bg-green-300 p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg text-center transform animate-pulse">
             <h2 className="text-3xl font-bold mb-2">⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️</h2>
-            <p className="text-xl">Konami Code Activated! You`&apos`ve unlocked infinite Aura! (Or just this popup...)</p>
+            <p className="text-xl">Konami Code Activated! You&apos;ve unlocked infinite Aura! (Or just this popup...)</p>
             <div className="mt-4 text-6xl">👾</div>
           </div>
         </div>
