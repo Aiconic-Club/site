@@ -37,8 +37,7 @@ export async function generateMetadata({
 // BlogPostPage component - displaying the blog post details
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function BlogPostPage({ 
-  params,
-  searchParams 
+  params, 
 }: { 
   params: { slug: string };
   searchParams?: { [key: string]: string | string[] | undefined };
