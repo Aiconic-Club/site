@@ -7,12 +7,6 @@ import { blogPosts } from "../data";
 import { Metadata } from "next";
 import Image from "next/image";
 
-type BlogPostParams = {
-  params: {
-    slug: string;
-  };
-};
-
 // Generate static parameters for all blog posts
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -21,7 +15,11 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for the page based on the slug
-export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: { slug: string } 
+}): Promise<Metadata> {
   const post = blogPosts.find((post) => post.slug === params.slug);
   
   if (!post) {
@@ -37,7 +35,15 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
 }
 
 // BlogPostPage component - displaying the blog post details
-export default function BlogPostPage({ params }: BlogPostParams) {
+// Using searchParams even if not used to satisfy PageProps constraint
+export default async function BlogPostPage({ 
+  params, 
+  searchParams 
+}: { 
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  // Make this function async to satisfy any Promise expectations
   const post = blogPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
